@@ -1,0 +1,33 @@
+{
+   "name": "react-native-keycode",
+   "version": "1.0.0",
+   "description": "Show a code input field.",
+   "main": "index.js",
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/includable/react-native-keycode.git"
+   },
+   "keywords": [
+      "react-native",
+      "react-component",
+      "code",
+      "password",
+      "input",
+      "react",
+      "ios",
+      "android"
+   ],
+   "author": "Thomas Schoffelen <thomas@includable.com> (https://includable.com/)",
+   "license": "MIT",
+   "bugs": {
+      "url": "https://github.com/includable/react-native-keycode/issues"
+   },
+   "homepage": "https://github.com/includable/react-native-keycode#readme",
+   "dependencies": {
+      "prop-types": "^15.6.0"
+   },
+   "peerDependencies": {
+      "react": ">=15.0.0",
+      "react-native": ">=0.40.0"
+   }
+}
