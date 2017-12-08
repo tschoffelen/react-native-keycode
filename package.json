@@ -1,6 +1,6 @@
 {
    "name": "react-native-keycode",
-   "version": "1.0.1",
+   "version": "1.0.2",
    "description": "Show the user a input form for a fixed-length code or password.",
    "main": "index.js",
    "repository": {
