@@ -36,8 +36,10 @@ View a more complex example here: [example/App.js](example/App.js).
 * string `tintColor`: color string for the color of the active character bar (default: iOS blue)
 * string `defaultValue`: default ''
 * string `value`: default ''
-* boolean `numberic`: default false
+* boolean `uppercase`: default true
 * boolean `autoFocus`: default true
+* boolean `alphaNumeric`: default true, set to false to allow other characters than 0-9, A-Z
+* boolean `numberic`: default false
 * object `style`
 * function `onComplete`
 * function `onChange`

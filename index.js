@@ -16,6 +16,9 @@ export class KeycodeInput extends Component {
     onComplete: PropTypes.func,
     autoFocus: PropTypes.bool,
     defaultValue: PropTypes.string,
+    regex: PropTypes.any,
+    uppercase: PropTypes.bool,
+    alphaNumeric: PropTypes.bool,
     numeric: PropTypes.bool,
     value: PropTypes.string,
     style: PropTypes.any,
@@ -27,6 +30,8 @@ export class KeycodeInput extends Component {
     length: 4,
     autoFocus: true,
     numeric: false,
+    alphaNumeric: true,
+    uppercase: true,
     defaultValue: '',
     value: ''
   }
@@ -44,7 +49,7 @@ export class KeycodeInput extends Component {
   async componentWillReceiveProps (nextProps) {
     console.log(nextProps)
     if ('value' in nextProps && nextProps.value !== this.state.value) {
-      await this.setState({value: nextProps.value})
+      await this._setValue(nextProps.value)
     }
 
     if (this.state.value.length < this.props.length) {
@@ -54,8 +59,19 @@ export class KeycodeInput extends Component {
     }
   }
 
+  _setValue (value) {
+    if (this.props.uppercase) {
+      value = value.toUpperCase()
+    }
+    if (this.props.alphaNumeric) {
+      value = value.replace('/[^a-z0-9]/i', '')
+    }
+
+    this.setState({value})
+  }
+
   async _changeText (value) {
-    await this.setState({value})
+    await this._setValue(value)
 
     if (this.props.onChange) {
       await this.props.onChange(this.state.value)
