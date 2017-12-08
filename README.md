@@ -2,7 +2,9 @@
 
 Show the user a input form for a fixed-length code or password.
 
-<img src="./screenshot.png" style="border: 1px solid #DFE2E5;" height="300" />
+<table><tr><td>
+    <img src="./screenshot.png" height="300" />
+</td></tr></table>
 
 
 ## Installation
