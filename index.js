@@ -12,6 +12,7 @@ export class KeycodeInput extends Component {
   static propTypes = {
     length: PropTypes.number,
     tintColor: PropTypes.string,
+    textColor: PropTypes.string,
     onChange: PropTypes.func,
     onComplete: PropTypes.func,
     autoFocus: PropTypes.bool,
@@ -27,6 +28,7 @@ export class KeycodeInput extends Component {
 
   static defaultProps = {
     tintColor: '#007AFF',
+    textColor: '#000',
     length: 4,
     autoFocus: true,
     numeric: false,
@@ -125,7 +127,7 @@ export class KeycodeInput extends Component {
               this.props.ref(component)
             }
           }}
-          style={styles.input}
+          style={[styles.input, {color: this.props.textColor}]}
           autoFocus={this.props.autoFocus}
           autoCorrect={false}
           autoCapitalize='characters'
