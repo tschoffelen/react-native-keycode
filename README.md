@@ -33,7 +33,8 @@ View a more complex example here: [example/App.js](example/App.js).
 
 ### Props
 * number `length`: number of characters in input (default: 4)
-* string `tintColor`: color string for the color of the active character bar (default: iOS blue)
+* string `textColor`: color string for the color of the characters (default: black)
+* string `tintColor`: color string for the color of the active bottom bar (default: iOS blue)
 * string `defaultValue`: default ''
 * string `value`: default ''
 * boolean `uppercase`: default true
