@@ -23,7 +23,7 @@ export class KeycodeInput extends Component {
     numeric: PropTypes.bool,
     value: PropTypes.string,
     style: PropTypes.any,
-    ref: PropTypes.func
+    inputRef: PropTypes.func
   }
 
   static defaultProps = {
@@ -123,8 +123,8 @@ export class KeycodeInput extends Component {
         <TextInput
           ref={(component) => {
             this.input = component
-            if (this.props.ref) {
-              this.props.ref(component)
+            if (this.props.inputRef) {
+              this.props.inputRef(component)
             }
           }}
           style={[styles.input, {color: this.props.textColor}]}
