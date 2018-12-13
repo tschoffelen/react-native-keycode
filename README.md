@@ -1,5 +1,7 @@
 # React Native Keycode
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/includable/react-native-keycode.svg)](https://greenkeeper.io/)
+
 Show the user a input form for a fixed-length code or password.
 
 <table><tr><td>
