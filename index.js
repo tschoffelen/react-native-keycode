@@ -49,7 +49,6 @@ export class KeycodeInput extends Component {
   }
 
   async componentWillReceiveProps (nextProps) {
-    console.log(nextProps)
     if ('value' in nextProps && nextProps.value !== this.state.value) {
       await this._setValue(nextProps.value)
     }
