@@ -49,7 +49,6 @@ export class KeycodeInput extends Component {
   }
 
   async componentWillReceiveProps (nextProps) {
-    console.log(nextProps)
     if ('value' in nextProps && nextProps.value !== this.state.value) {
       await this._setValue(nextProps.value)
     }
@@ -104,7 +103,7 @@ export class KeycodeInput extends Component {
 
       elements.push(
         <View style={styles.box} key={i}>
-          <Text style={styles.text}>{vals[i] || ''}</Text>
+          <Text style={[styles.text, { color: this.props.textColor }]}>{vals[i] || ''}</Text>
           <View style={barStyles}/>
         </View>
       )
@@ -127,7 +126,7 @@ export class KeycodeInput extends Component {
               this.props.inputRef(component)
             }
           }}
-          style={[styles.input, {color: this.props.textColor}]}
+          style={styles.input}
           autoFocus={this.props.autoFocus}
           autoCorrect={false}
           autoCapitalize='characters'
