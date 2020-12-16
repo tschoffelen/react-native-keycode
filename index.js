@@ -16,6 +16,15 @@ export const KeycodeInput = (props) => {
     }
   }, [props.value]);
 
+  useEffect(() => {
+    if (__DEV__) {
+      if (!(props.filterType in FilterTypes)) {
+        const {numeric, alphaNumeric} = FilterTypes;
+        console.warn(`filterType can be either ${numeric} or ${alphaNumeric}, for input to be fitered`);
+      }
+    }
+  }, []);
+
   if (props.value !== undefined && !props.onChange) {
     throw new Error(
       'To use the KeycodeInput as a controlled component, ' +
@@ -27,8 +36,11 @@ export const KeycodeInput = (props) => {
     if (props.uppercase) {
       value = value.toUpperCase();
     }
-    if (props.alphaNumeric) {
-      value = value.replace('/[^a-z0-9]/i', '');
+
+    if (props.filterType == FilterTypes.alphaNumeric) {
+      value = value.replace(/[^a-z0-9]/i, '');
+    } else if (props.filterType == FilterTypes.numeric) {
+      value = value.replace(/[^0-9]/i, '');
     }
 
     setInputValue(value);
@@ -67,7 +79,7 @@ export const KeycodeInput = (props) => {
     return elements;
   };
 
-  let keyboardType = props.numeric ? 'numeric' : (Platform.OS === 'ios' ? 'ascii-capable' : 'default');
+  let keyboardType = props.filterType === FilterTypes.numeric ? 'numeric' : (Platform.OS === 'ios' ? 'ascii-capable' : 'default');
 
   return (
     <View style={[styles.container, props.style]}>
@@ -97,6 +109,11 @@ export const KeycodeInput = (props) => {
   );
 };
 
+export const FilterTypes = {
+  numeric: 'numeric',
+  alphaNumeric: 'alphaNumeric'
+}
+
 KeycodeInput.propTypes = {
   length: PropTypes.number,
   tintColor: PropTypes.string,
@@ -105,8 +122,7 @@ KeycodeInput.propTypes = {
   onComplete: PropTypes.func,
   autoFocus: PropTypes.bool,
   uppercase: PropTypes.bool,
-  alphaNumeric: PropTypes.bool,
-  numeric: PropTypes.bool,
+  filterType: PropTypes.string,
   value: PropTypes.string,
   style: PropTypes.any,
   inputRef: PropTypes.func
@@ -117,8 +133,7 @@ KeycodeInput.defaultProps = {
   textColor: '#000',
   length: 4,
   autoFocus: true,
-  numeric: false,
-  alphaNumeric: true,
+  filterType: FilterTypes.alphaNumeric,
   uppercase: true,
   defaultValue: ''
 };
