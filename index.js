@@ -38,9 +38,9 @@ export const KeycodeInput = (props) => {
     }
 
     if (props.filterType == FilterTypes.alphaNumeric) {
-      value = value.replace(/[^a-z0-9]/i, '');
+      value = value.replace(/[^a-z0-9]/gi, '');
     } else if (props.filterType == FilterTypes.numeric) {
-      value = value.replace(/[^0-9]/i, '');
+      value = value.replace(/[^0-9]/gi, '');
     }
 
     setInputValue(value);
