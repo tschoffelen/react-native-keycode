@@ -11,6 +11,8 @@ declare module 'react-native-keycode' {
         numeric?: bool
         value?: string
         style?: any
+        useMask?: bool
+        hasError?: bool
         inputRef?: (ref: React.RefObject<TextInput>) => void
     }
 

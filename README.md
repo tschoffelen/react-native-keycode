@@ -41,6 +41,8 @@ View a more complex example here: [example/App.js](example/App.js).
 * boolean `autoFocus`: default true
 * boolean `alphaNumeric`: default true, set to false to allow other characters than 0-9, A-Z
 * boolean `numberic`: default false
+* boolean `useMask`: default false
+* boolean `hasError`: default false
 * object `style`
 * function `onComplete`
 * function `onChange`
