@@ -52,13 +52,15 @@ export const KeycodeInput = (props) => {
     let vals = inputValue.split('');
     while (i < props.length) {
       let active = i === inputValue.length;
-      let barStyles = [styles.bar, active ? [styles.barActive, { backgroundColor: props.tintColor }] : []];
+      let barStyles = [styles.bar, props.hasError ? styles.barError : vals[i] !== undefined ? [styles.barActive, { backgroundColor: props.tintColor }] : []];
 
       elements.push(
-        <View style={styles.box} key={i}>
-          <Text style={styles.text}>{vals[i] || ''}</Text>
-          <View style={barStyles}/>
-        </View>
+          <View style={styles.box} key={i}>
+            <Text style={[props.useMask ? styles.maskedText : styles.text, {color: props.textColor}]}>
+              {props.useMask ? (vals[i] !== undefined ?  '•' : '') : vals[i] || ''}
+            </Text>
+            <View style={barStyles}/>
+          </View>
       );
 
       i++;
@@ -109,7 +111,9 @@ KeycodeInput.propTypes = {
   numeric: PropTypes.bool,
   value: PropTypes.string,
   style: PropTypes.any,
-  inputRef: PropTypes.func
+  inputRef: PropTypes.func,
+  useMask: PropTypes.bool,
+  hasError: PropTypes.bool
 };
 
 KeycodeInput.defaultProps = {
@@ -120,6 +124,8 @@ KeycodeInput.defaultProps = {
   numeric: false,
   alphaNumeric: true,
   uppercase: true,
+  useMask: false,
+  hasError: false,
   defaultValue: ''
 };
 
@@ -136,11 +142,16 @@ const styles = StyleSheet.create({
     zIndex: 100
   },
   box: {
-    width: 32,
+    width: 52,
     marginHorizontal: 5
   },
   bar: {
-    backgroundColor: '#CED5DB',
+    backgroundColor: '#969696',
+    height: 1,
+    width: 32
+  },
+  barError: {
+    backgroundColor: "#c93a3a",
     height: 1,
     width: 32
   },
@@ -149,9 +160,18 @@ const styles = StyleSheet.create({
     marginTop: -0.5
   },
   text: {
-    fontSize: 32,
+    fontSize: 48,
     fontWeight: '600',
-    lineHeight: 36,
+    lineHeight: 48,
+    height: 36,
+    textAlign: 'center',
+    width: 32,
+    marginBottom: 8
+  },
+  maskedText: {
+    fontSize: 60,
+    fontWeight: '600',
+    lineHeight: 60,
     height: 36,
     textAlign: 'center',
     width: 32,
